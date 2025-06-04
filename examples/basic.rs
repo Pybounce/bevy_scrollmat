@@ -35,7 +35,7 @@ fn setup(
                 ..default()
             },
             extension: ScrollMatExtension {
-                scroll_speed: Vec2::ONE
+                scroll_speed: Vec2::Y
             }
         })),
         Transform::from_xyz(0.0, 0.5, 0.0),

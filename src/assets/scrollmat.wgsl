@@ -30,7 +30,8 @@ fn fragment(
     @builtin(front_facing) is_front: bool,
 ) -> FragmentOutput {
     var in2 = in;
-    in2.uv += (scrollmat_extension.scroll_speed * (globals.time % 1.0)) % 1.0;
+    //in2.uv += (scrollmat_extension.scroll_speed * (globals.time % 1.0)) % 1.0;
+    in2.uv += (globals.time * scrollmat_extension.scroll_speed) % 1.0;
 
     // generate a PbrInput struct from the StandardMaterial bindings
     var pbr_input = pbr_input_from_standard_material(in2, is_front);
@@ -41,7 +42,7 @@ fn fragment(
 
 #ifdef PREPASS_PIPELINE
     // in deferred mode we can't modify anything after that, as lighting is run in a separate fullscreen shader.
-    let out = deferred_output(in, pbr_input);
+    var out = deferred_output(in2, pbr_input);
 #else
     var out: FragmentOutput;
     // apply lighting
@@ -50,8 +51,13 @@ fn fragment(
     // apply in-shader post processing (fog, alpha-premultiply, and also tonemapping, debanding if the camera is non-hdr)
     // note this does not include fullscreen postprocessing effects like bloom.
     out.color = main_pass_post_lighting_processing(pbr_input, out.color);
-
 #endif
 
+    if in2.uv.y > 0.9 {
+        out.color = vec4f(0.0, 0.0, 0.0, 1.0);
+    }
+    else {
+        out.color = vec4f(1.0, 1.0, 1.0, 1.0);
+    }
     return out;
 }
