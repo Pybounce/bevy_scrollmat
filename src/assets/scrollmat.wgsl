@@ -53,11 +53,5 @@ fn fragment(
     out.color = main_pass_post_lighting_processing(pbr_input, out.color);
 #endif
 
-    if in2.uv.y > 0.9 {
-        out.color = vec4f(0.0, 0.0, 0.0, 1.0);
-    }
-    else {
-        out.color = vec4f(1.0, 1.0, 1.0, 1.0);
-    }
     return out;
 }
