@@ -41,6 +41,6 @@ A simple Extension Material that applies a scrolling effect to the uvs of the ma
 
 ## Compatibility
 
-| Bevy version | `bevy_simpletoon` version |
-| :----------- | :------------------------ |
-| `0.16`       | `0.1`                     |
+| Bevy version | `bevy_scrollmat` version |
+| :----------- | :----------------------- |
+| `0.16`       | `0.1`                    |

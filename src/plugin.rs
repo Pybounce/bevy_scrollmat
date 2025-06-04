@@ -14,6 +14,7 @@ impl Plugin for ScrollMatPlugin {
 
 #[derive(Asset, AsBindGroup, Reflect, Debug, Clone)]
 pub struct ScrollMatExtension {
+    /// Scroll speed, per second
     #[uniform(100)]
     pub scroll_speed: Vec2,
 }
