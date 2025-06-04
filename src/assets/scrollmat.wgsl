@@ -30,7 +30,7 @@ fn fragment(
     @builtin(front_facing) is_front: bool,
 ) -> FragmentOutput {
     var in2 = in;
-    in2.uv += scrollmat_extension.scroll_speed * sin(globals.time);
+    in2.uv += scrollmat_extension.scroll_speed * (globals.time % 1.0);
 
     // generate a PbrInput struct from the StandardMaterial bindings
     var pbr_input = pbr_input_from_standard_material(in2, is_front);
