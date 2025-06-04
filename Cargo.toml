@@ -2,6 +2,12 @@
 name = "bevy_scrollmat"
 version = "0.1.0"
 edition = "2024"
+categories = ["game-development"]
+keywords = ["bevy", "bevy_scrolling", "bevy_shader"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Pybounce/bevy_scrollmat"
+publish = true
+description = "A simple Extension Material that applies a scrolling effect to the uvs of the material."
 
 [dependencies]
 bevy = "0.16.0"

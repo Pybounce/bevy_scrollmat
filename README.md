@@ -1,5 +1,7 @@
 # bevy_scrollmat
 
+[![Latest version](https://img.shields.io/crates/v/bevy_scrollmat.svg)](https://crates.io/crates/bevy_scrollmat)
+
 A simple Extension Material that applies a scrolling effect to the uvs of the material.
 
 ## Usage
