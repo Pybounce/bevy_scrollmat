@@ -18,6 +18,20 @@ pub struct ScrollMatExtension {
     pub scroll_speed: Vec2,
 }
 
+impl ScrollMatExtension {
+    pub fn new(scroll_speed: Vec2) -> Self {
+        Self {
+            scroll_speed
+        }
+    }
+}
+
+impl Default for ScrollMatExtension {
+    fn default() -> Self {
+        Self { scroll_speed: Default::default() }
+    }
+}
+
 impl MaterialExtension for ScrollMatExtension {
     fn fragment_shader() -> ShaderRef {
         "embedded://bevy_scrollmat/assets/scrollmat.wgsl".into()
