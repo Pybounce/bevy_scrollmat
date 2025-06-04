@@ -5,11 +5,13 @@
 
 #ifdef PREPASS_PIPELINE
 #import bevy_pbr::{
+    prepass_bindings::globals,
     prepass_io::{VertexOutput, FragmentOutput},
     pbr_deferred_functions::deferred_output,
 }
 #else
 #import bevy_pbr::{
+    mesh_view_bindings::globals,
     forward_io::{VertexOutput, FragmentOutput},
     pbr_functions::{apply_pbr_lighting, main_pass_post_lighting_processing},
 }
@@ -27,8 +29,11 @@ fn fragment(
     in: VertexOutput,
     @builtin(front_facing) is_front: bool,
 ) -> FragmentOutput {
+    var in2 = in;
+    in2.uv += scrollmat_extension.scroll_speed * sin(globals.time);
+
     // generate a PbrInput struct from the StandardMaterial bindings
-    var pbr_input = pbr_input_from_standard_material(in, is_front);
+    var pbr_input = pbr_input_from_standard_material(in2, is_front);
 
 
     // alpha discard
